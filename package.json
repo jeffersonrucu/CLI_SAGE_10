@@ -1,0 +1,22 @@
+{
+  "name": "cli-sage-10",
+  "version": "1.0.0",
+  "description": "CLI to start wordpress project with sage 10",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffersonrucu/CLI_SAGE_10.git"
+  },
+  "keywords": [
+    "cli",
+    "sage",
+    "wordpress"
+  ],
+  "author": "Jefferson Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffersonrucu/CLI_SAGE_10/issues"
+  },
+  "homepage": "https://github.com/jeffersonrucu/CLI_SAGE_10#readme"
+}
