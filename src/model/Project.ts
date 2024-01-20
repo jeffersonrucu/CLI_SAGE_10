@@ -8,11 +8,11 @@ export class Project {
 
     constructor(projectName: string, theme: string, versionSage: string, css: string, js: string, docker: boolean) {
         this.projectName = projectName;
-        this.theme = theme;
+        this.theme       = theme;
         this.versionSage = versionSage;
-        this.css = css;
-        this.js = js;
-        this.docker = docker;
+        this.css         = css;
+        this.js          = js;
+        this.docker      = docker;
     }
 
     public getProjectName(): string {

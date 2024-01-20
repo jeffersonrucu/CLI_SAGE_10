@@ -10,7 +10,7 @@ class App {
     private question: ViewQuestion;
 
     constructor() {
-        this.message = new ViewMessage();
+        this.message  = new ViewMessage();
         this.question = new ViewQuestion();
 
         this.init();
