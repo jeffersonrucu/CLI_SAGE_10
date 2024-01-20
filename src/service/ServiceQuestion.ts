@@ -1,20 +1,26 @@
 import { input, select, confirm, Separator } from '@inquirer/prompts';
 import { QuestionEnum } from '../model/QuestionEnum';
 
-export class ControllerQuestions {
-    public async theme(): Promise<string> {
+export class ServiceQuestion {
+    public async askProjectName(): Promise<string> {
+        return await input({
+            message: QuestionEnum.PROJECT_NAME
+        });
+    }
+
+    public async askTheme(): Promise<string> {
         return await input({
             message: QuestionEnum.THEME
         });
     }
 
-    public async sageVersion(): Promise<string> {
+    public async askSageVersion(): Promise<string> {
         return await select({
             message: QuestionEnum.SAGE_VERSION,
             choices: [
                 {
                   name: '10',
-                  value: '10',
+                  value: '10.7.0',
                   description: 'Last version',
                 },
                 new Separator(),
@@ -27,7 +33,7 @@ export class ControllerQuestions {
         });
     }
 
-    public async cssPreprocessor(): Promise<string> {
+    public async askCssPreprocessor(): Promise<string> {
         return await select({
             message: QuestionEnum.CSS_PREPROCESSOR,
             choices: [
@@ -56,7 +62,7 @@ export class ControllerQuestions {
         });
     }
 
-    public async jsInterpreter(): Promise<string> {
+    public async askJsInterpreter(): Promise<string> {
         return await select({
             message: QuestionEnum.JS_INTERPRETER,
             choices: [
@@ -85,7 +91,7 @@ export class ControllerQuestions {
         });
     }
 
-    public async docker(): Promise<boolean> {
+    public async askDocker(): Promise<boolean> {
         return await confirm({
             message: QuestionEnum.USE_DOCKER,
             default: true,

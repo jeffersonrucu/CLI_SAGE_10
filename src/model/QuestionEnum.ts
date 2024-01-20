@@ -1,4 +1,5 @@
 export enum QuestionEnum {
+    PROJECT_NAME     = "Enter the project name",
     THEME            = "Enter the theme name",
     SAGE_VERSION     = "Enter the sage value",
     CSS_PREPROCESSOR = "Which CSS preprocessor do you want to use?",
