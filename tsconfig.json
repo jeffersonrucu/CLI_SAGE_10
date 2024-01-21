@@ -9,5 +9,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"],
   "lib": ["ES2022"]
 }

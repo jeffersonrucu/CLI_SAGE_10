@@ -1,11 +1,11 @@
 {
-  "name": "cli-sage-10",
-  "version": "1.0.0",
+  "name": "cli-sage",
+  "version": "1.0.4",
   "description": "CLI to start wordpress project with sage 10",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
-    "start": "npm run build && node dist/index.js"
+    "build": "npx tsc && node dist/Persist.js",
+    "start": "npm run build && node dist/App.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,11 @@
     "eslint": "^8.56.0",
     "figlet": "^1.7.0",
     "fs": "^0.0.1-security",
+    "replace-in-file": "^7.1.0",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/ncp": "^2.0.8",
+    "ncp": "^2.0.0"
   }
 }
