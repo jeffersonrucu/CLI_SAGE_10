@@ -114,6 +114,26 @@ export class ServiceFile {
             });
     }
 
+    public async createTypeScript(data: Project): Promise<void> {
+        const template = {
+            tsconfig: path.dirname(__dirname) + '/templates/www/wordpress/themes/tsconfig.json',
+            package: path.dirname(__dirname) + '/templates/www/wordpress/themes/package.json',
+            scripts: path.dirname(__dirname) + '/templates/www/wordpress/themes/scripts',
+        }
+
+        const files = {
+            tsconfig: `${process.cwd()}/${data.getProjectName()}/www/wordpress/themes/${data.getTheme()}/tsconfig.json`,
+            package: `${process.cwd()}/${data.getProjectName()}/www/wordpress/themes/${data.getTheme()}/package.json`,
+            scripts: `${process.cwd()}/${data.getProjectName()}/www/wordpress/themes/${data.getTheme()}/resources/scripts`,
+        }
+
+        fs.copyFileSync(template.tsconfig, files.tsconfig);
+        fs.copyFileSync(template.package, files.package);
+
+        fs.rmSync(files.scripts,{ recursive: true, force: true });
+        fs.cpSync(template.scripts, files.scripts, {recursive: true});
+    }
+
     public async renameFileSage(data: Project): Promise<void> {
         fs.rename(
             `${process.cwd()}/${data.getProjectName()}/www/wordpress/themes/sage-${data.getVersionSage()}`,
@@ -142,8 +162,15 @@ export class ServiceFile {
         fs.cpSync(`${file.template}/.vscode`, `${file.project}/.vscode`, {recursive: true});
         fs.cpSync(`${file.template}/config`, `${file.project}/config`, {recursive: true});
 
+        fs.copyFileSync(`${file.template}/Dockerfile`, `${file.project}/Dockerfile`);
         fs.copyFileSync(`${file.template}/.editorconfig`, `${file.project}/.editorconfig`);
         fs.copyFileSync(`${file.template}/composer.json`, `${file.project}/composer.json`);
         fs.copyFileSync(`${file.template}/README.md`, `${file.project}/README.md`);
+
+        fs.unlinkSync(`${file.project}/www/wordpress/themes/${data.getTheme()}/composer.json`);
+        fs.copyFileSync(`${file.template}/www/wordpress/themes/composer.json`, `${file.project}/www/wordpress/themes/${data.getTheme()}/composer.json`);
+
+        fs.unlinkSync(`${file.project}/www/wordpress/themes/${data.getTheme()}/resources/views/index.blade.php`);
+        fs.copyFileSync(`${file.template}/www/wordpress/themes/index.blade.php`, `${file.project}/www/wordpress/themes/${data.getTheme()}/resources/views/index.blade.php`);
     }
 }

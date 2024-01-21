@@ -20,5 +20,15 @@ export class ControllerProject {
         if(data.getDocker()) {
             await file.createDocker(data);
         }
+
+        // JS
+        switch(data.getJs()) {
+            case 'TypeScript':
+                await file.createTypeScript(data);
+                break;
+
+            default:
+                break;
+        }
     }
 }

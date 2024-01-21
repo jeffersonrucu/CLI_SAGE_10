@@ -1,6 +1,6 @@
 {
   "name": "cli-sage",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CLI to start wordpress project with sage 10",
   "main": "index.js",
   "scripts": {
