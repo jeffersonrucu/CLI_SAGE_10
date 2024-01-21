@@ -1,0 +1,35 @@
+{
+  "name": "natura/website",
+  "authors": [
+    {
+      "name": "Lorem Ipsum",
+      "email": "loremipsum@lorem.com"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "require": {
+    "wpackagist-plugin/safe-svg": "2.1.1"
+  },
+  "extra": {
+    "installer-paths": {
+      "www/wordpress/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "wordpress-install-dir": "wordpress"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

@@ -1,0 +1,35 @@
+version: '3'
+services:
+  CLI_IMAGE_DB:
+    image: mariadb
+    volumes:
+      - ./database:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+
+  CLI_IMAGE_WP:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - CLI_IMAGE_DB
+    volumes:
+      - ./www/wordpress/themes/:/var/www/html/wp-content/themes/
+      - ./www/wordpress/plugins/:/var/www/html/wp-content/plugins/
+      - ./www/wordpress/uploads/:/var/www/html/wp-content/uploads/
+      - ./www/config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: CLI_IMAGE_DB:3306
+      WORDPRESS_DB_NAME: ${DATABASE_NAME}
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+
+volumes:
+  CLI_IMAGE_DB:

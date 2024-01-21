@@ -1,0 +1,24 @@
+#default
+.env
+
+# themes
+www/wordpress/themes/*
+!www/wordpress/themes/CLI_NAME_THEME
+
+# plugins
+www/wordpress/plugins
+
+# uploads
+www/wordpress/uploads
+
+# config
+www/config/wp-config.php
+
+# composer
+composer.lock
+vendor
+
+# docker
+database
+
+.DS_Store

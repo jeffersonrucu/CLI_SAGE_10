@@ -1,0 +1,16 @@
+{
+  "editor.fontSize": 12,
+  "editor.rulers": [80, 120],
+  "editor.renderWhitespace": "all",
+  "editor.wordWrap": "off",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "*.scss": "tailwindcss",
+  },
+  "files.exclude": {
+    "www/wordpress/themes/twentytwentyone": true,
+    "www/wordpress/themes/twentytwentytwo": true,
+    "www/wordpress/themes/twentytwentythree": true,
+  }
+}
